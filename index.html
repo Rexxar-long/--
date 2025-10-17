@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>梅乔苏每日福利</title>
+  <style>
+    body { 
+      font-family: sans-serif; 
+      padding: 40px 20px; 
+      text-align: center; 
+      background-color: #f9f9f9; 
+      margin: 0;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      min-height: 100vh;
+    }
+    /* 超大字号+加粗，中老年人轻松阅读 */
+    h2, p, a {
+      font-size: 32px !important; 
+      font-weight: bold;
+      line-height: 2;
+      margin: 15px 0;
+    }
+    /* 核心提示用红色强调 */
+    .warning {
+      color: #e63946;
+      padding: 10px;
+      background-color: #fff;
+      border-radius: 8px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+    }
+    /* 手动按钮区域加大+绿色突出 */
+    a {
+      color: #fff;
+      background-color: #07c160;
+      text-decoration: none;
+      padding: 20px;
+      border-radius: 10px;
+      width: 80%;
+      margin: 30px auto;
+      display: block;
+    }
+  </style>
+</head>
+<body>
+  <h2>今日福利领取</h2>
+  <p>请点击下方按钮领取今日福利</p>
+  <p class="warning">点击后请务必点击 <span style="color: #07c160; font-size: 36px;">绿色的“打开小程序”按钮</span> 领券哦~</p>
+  <p id="todayLink"></p>
+
+  <script>
+    try {
+      const today = new Date().getDay();
+      // 已保留您提供的短链
+      const shortLinks = [
+        "https://c1n.cn/周日短链", // 周日
+        "https://c1n.cn/周一短链", // 周一
+        "https://c1n.cn/周二短链", // 周二
+        "https://c1n.cn/周三短链", // 周三
+        "https://c.c1nd.cn/cTlwP", // 周四
+        "https://c.c1nd.cn/SePge", // 周五
+        "https://c.c1nd.cn/RujVv"  // 周六
+      ];
+      const weekdays = ["周日", "周一", "周二", "周三", "周四", "周五", "周六"];
+      const todayText = weekdays[today];
+      
+      // 显示手动领取链接（唯一跳转入口）
+      document.getElementById("todayLink").innerHTML = 
+        `<a href="${shortLinks[today]}">💡 ${todayText}福利：点击立即领取</a>`;
+    } catch (error) {
+      document.body.innerHTML = `<h3>加载失败</h3><p>请联系店家获取今日福利～</p>`;
+    }
+  </script>
+</body>
+</html>
