@@ -2,6 +2,11 @@
 <html>
 <head>
   <meta charset="UTF-8">
+  <!-- 👇 微信图文卡片配置：确保链接在微信里显示图片 -->
+  <meta property="og:title" content="梅乔苏每日福利">
+  <meta property="og:description" content="点击领取今日专属福利，领券后可享优惠～">
+  <meta property="og:image" content="https://1-1309578397.cos.ap-shanghai.myqcloud.com/%E4%B8%96%E7%95%8C%E7%88%B1%E8%99%8E%E6%97%A5%E5%8A%A8%E7%89%A9%E4%BF%9D%E6%8A%A4%E5%AE%A3%E4%BC%A0%E6%89%8B%E7%BB%98%E6%8F%92%E7%94%BB%E6%89%8B%E6%9C%BA%E6%B5%B7%E6%8A%A8%20%288%29.png">
+  <meta property="og:url" content="https://你的网页链接"> <!-- 替换成这个网页的GitHub Pages地址 -->
   <title>梅乔苏每日福利</title>
   <style>
     body { 
@@ -14,6 +19,14 @@
       flex-direction: column;
       justify-content: center;
       min-height: 100vh;
+    }
+    /* 图片适配手机屏幕，避免变形 */
+    .福利图片 {
+      width: 100%;
+      max-width: 380px;
+      border-radius: 10px;
+      margin: 20px auto;
+      box-shadow: 0 3px 8px rgba(0,0,0,0.1);
     }
     /* 超大字号+加粗，中老年人轻松阅读 */
     h2, p, a {
@@ -44,6 +57,9 @@
   </style>
 </head>
 <body>
+  <!-- 页面内显示图片，和微信卡片图保持一致 -->
+  <img src="https://1-1309578397.cos.ap-shanghai.myqcloud.com/%E4%B8%96%E7%95%8C%E7%88%B1%E8%99%8E%E6%97%A5%E5%8A%A8%E7%89%A9%E4%BF%9D%E6%8A%A4%E5%AE%A3%E4%BC%A0%E6%89%8B%E7%BB%98%E6%8F%92%E7%94%BB%E6%89%8B%E6%9C%BA%E6%B5%B7%E6%8A%A8%20%288%29.png" alt="梅乔苏福利图" class="福利图片">
+  
   <h2>今日福利领取</h2>
   <p>请点击下方按钮领取今日福利</p>
   <p class="warning">点击后请务必点击 <span style="color: #07c160; font-size: 36px;">绿色的“打开小程序”按钮</span> 领券哦~</p>
@@ -52,7 +68,7 @@
   <script>
     try {
       const today = new Date().getDay();
-      // 已保留您提供的短链
+      // 保留你提供的每日短链
       const shortLinks = [
         "https://c1n.cn/周日短链", // 周日
         "https://c1n.cn/周一短链", // 周一
@@ -65,7 +81,7 @@
       const weekdays = ["周日", "周一", "周二", "周三", "周四", "周五", "周六"];
       const todayText = weekdays[today];
       
-      // 显示手动领取链接（唯一跳转入口）
+      // 渲染手动领券按钮
       document.getElementById("todayLink").innerHTML = 
         `<a href="${shortLinks[today]}">💡 ${todayText}福利：点击立即领取</a>`;
     } catch (error) {
