@@ -2,11 +2,11 @@
 <html>
 <head>
   <meta charset="UTF-8">
-  <!-- 微信图文卡片配置（已替换为raw图片链接） -->
+  <!-- 微信图文卡片配置（确保图片链接正确） -->
   <meta property="og:title" content="梅乔苏每日福利">
   <meta property="og:description" content="点击领取今日专属福利，领券后可享优惠～">
-  <meta property="og:image" content="https://github.com/Rexxar-long/--/raw/37210f8bf6ab4536709f76595f62781ce99ccb47/images/%E4%B8%96%E7%95%8C%E7%88%B1%E8%99%8E%E6%97%A5%E5%8A%A8%E7%89%A9%E4%BF%9D%E6%8A%A4%E5%AE%A3%E4%BC%A0%E6%89%8B%E7%BB%98%E6%8F%92%E7%94%BB%E6%89%8B%E6%9C%BA%E6%B5%B7%E6%8A%A5%20(8).png">
-  <meta property="og:url" content="https://你的网页链接"> <!-- 替换成你的GitHub Pages链接 -->
+  <meta property="og:image" content="https://1-1309578397.cos.ap-shanghai.myqcloud.com/%E4%B8%96%E7%95%8C%E7%88%B1%E8%99%8E%E6%97%A5%E5%8A%A8%E7%89%A9%E4%BF%9D%E6%8A%A4%E5%AE%A3%E4%BC%A0%E6%89%8B%E7%BB%98%E6%8F%92%E7%94%BB%E6%89%8B%E6%9C%BA%E6%B5%B7%E6%8A%A5%20(8).png">
+  <meta property="og:url" content="https://你的网页链接"> <!-- 替换为你的GitHub Pages地址 -->
   <title>梅乔苏每日福利</title>
   <style>
     body { 
@@ -20,13 +20,20 @@
       justify-content: center;
       min-height: 100vh;
     }
-    /* 图片适配手机屏幕 */
+    /* 图片适配优化，添加加载动画 */
     .福利图片 {
       width: 100%;
       max-width: 380px;
       border-radius: 10px;
       margin: 20px auto;
       box-shadow: 0 3px 8px rgba(0,0,0,0.1);
+      display: block; /* 确保图片为块级元素，避免空白 */
+    }
+    /* 图片加载失败提示 */
+    .img-error {
+      color: #e63946;
+      font-size: 28px !important;
+      margin: 20px 0;
     }
     h2, p, a {
       font-size: 32px !important; 
@@ -54,8 +61,15 @@
   </style>
 </head>
 <body>
-  <!-- 页面内图片（已替换为raw链接） -->
-  <img src="https://1-1309578397.cos.ap-shanghai.myqcloud.com/%E4%B8%96%E7%95%8C%E7%88%B1%E8%99%8E%E6%97%A5%E5%8A%A8%E7%89%A9%E4%BF%9D%E6%8A%A4%E5%AE%A3%E4%BC%A0%E6%89%8B%E7%BB%98%E6%8F%92%E7%94%BB%E6%89%8B%E6%9C%BA%E6%B5%B7%E6%8A%A5%20%288%29.png" alt="梅乔苏福利图" class="福利图片">
+  <!-- 页面内图片，添加加载失败提示 -->
+  <img 
+    src="https://1-1309578397.cos.ap-shanghai.myqcloud.com/%E4%B8%96%E7%95%8C%E7%88%B1%E8%99%8E%E6%97%A5%E5%8A%A8%E7%89%A9%E4%BF%9D%E6%8A%A4%E5%AE%A3%E4%BC%A0%E6%89%8B%E7%BB%98%E6%8F%92%E7%94%BB%E6%89%8B%E6%9C%BA%E6%B5%B7%E6%8A%A5%20(8).png" 
+    alt="梅乔苏福利图" 
+    class="福利图片"
+    onload="this.style.display='block'"  <!-- 加载成功才显示 -->
+    onerror="document.getElementById('imgError').style.display='block'; this.style.display='none'"  <!-- 加载失败显示错误提示 -->
+  >
+  <p id="imgError" class="img-error" style="display: none;">图片加载失败，请刷新页面重试~</p>
   
   <h2>今日福利领取</h2>
   <p>请点击下方按钮领取今日福利</p>
